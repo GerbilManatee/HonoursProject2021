@@ -58,8 +58,16 @@ public class Attacker {
             //test print
             //System.out.println("Attack no. " + i + " on target" + targetNode);
         }
+        
+        //Once we've finished a run, we tell the LogArray that the run is over.
+        logArray.endLog();
     }
     
+    /**
+     * Scout() is a function that explores the target Estate object, returning data on possible targets.
+     * @param estate
+     * @return The size of the targeted Estate list 
+     */
     
     private int scout(Estate estate) {
         return estate.getEstateSize();
