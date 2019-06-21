@@ -49,6 +49,10 @@ public class LogArray {
         }
     
     public void addResult(boolean deceptive) {
-        
+        logArray[writeTracker].addResult(deceptive);
+    }
+    
+    public void endLog() {
+        writeTracker++;
     }
 }
