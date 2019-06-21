@@ -14,7 +14,7 @@ public class TestConditions {
     /**
     * lengthOfWalk is the number of nodes an attacker will interact with.
     */
-    private int lengthOfWalk;
+    private int lengthOfRun;
     /**
     *numberOfHonestNodes is the number of non-deceptive nodes in the estate
     */
@@ -38,7 +38,7 @@ public class TestConditions {
     */
     
     public TestConditions() {
-        lengthOfWalk = 20;
+        lengthOfRun = 20;
         numberOfHonestNodes = 250;
         numberOfDeceptiveNodes = 500;
         percentDeceptiveEntryPoints = 75;
@@ -52,8 +52,8 @@ public class TestConditions {
     /**
     @return the number of nodes the attacker will be interacting with.
     */
-    public int getLengthofWalk() {
-        return lengthOfWalk;
+    public int getLengthofRun() {
+        return lengthOfRun;
     }
     
     /**
