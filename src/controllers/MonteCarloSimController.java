@@ -17,7 +17,7 @@ import model.TestConditions;
 public class MonteCarloSimController {
     //variables
     private TestConditions testConditions;
-    private int lengthOfWalk;
+    private int lengthOfRun;
     private int numberOfHonestNodes;
     private int numberOfDeceptiveNodes;
     private int percentDeceptiveEntryPoints;
@@ -46,15 +46,18 @@ public class MonteCarloSimController {
         estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes);
         
         //Then set up a ResultLog
-        lengthOfWalk = this.testConditions.getLengthofWalk();
+        lengthOfRun = this.testConditions.getLengthofRun();
         numberOfRuns = this.testConditions.getNumberOfRuns();
         logArray = new LogArray(numberOfRuns,lengthOfWalk);
         
         //Now set up an Attacker to attack the Estate.
         Attacker attacker = new Attacker(logArray, estate);
         
-        //test function (quick, dirty)
-        attacker.attackRun(lengthOfWalk);
+        for (i=0; i < numberOfRuns; i++) {
+            attacker.attackRun(lengthOfRun);
+            
+        }
+
     }
     
 }
