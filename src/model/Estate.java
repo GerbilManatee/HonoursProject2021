@@ -70,6 +70,6 @@ public class Estate {
         Node node = nodeArray.get(targetNode);
         node.interact(logArray);
         nodeArray.remove(targetNode);
-        System.out.println("Attacked and removed node" + targetNode);
+        //System.out.println("Attacked and removed node" + targetNode);
     }
 } 
