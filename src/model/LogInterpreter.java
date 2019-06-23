@@ -11,12 +11,12 @@ package model;
  */
 public class LogInterpreter {
  
-    LogArray logArray;
+    private LogArray logArray;
     
     /**
      * Default constructor - fallback only
      */
-    LogInterpreter(){
+    public LogInterpreter(){
     
         logArray = new LogArray();
     }
@@ -26,7 +26,7 @@ public class LogInterpreter {
      * LogInterpreter contains methods used to query the LogArray it is referred to.
      * @param logArray This is the LogArray used by the creating object.
      */
-    LogInterpreter(LogArray logArray) {
+    public LogInterpreter(LogArray logArray) {
         this.logArray = logArray;
     }
     
@@ -36,7 +36,7 @@ public class LogInterpreter {
      * holding in each entry a value of 1 if there was an interception and 0 
      * if there wasn't.
      */
-    int[] getInterceptResults() {
+    public int[] getInterceptResults() {
         //First check the size of the LogArray
         int logArraySize = logArray.getLogArraySize();
         //Then set up an array of the correct size to contain all the results.
