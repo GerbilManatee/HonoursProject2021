@@ -39,9 +39,9 @@ public class TestConditions {
     
     public TestConditions() {
         lengthOfRun = 20;
-        numberOfHonestNodes = 250;
-        numberOfDeceptiveNodes = 500;
-        percentDeceptiveEntryPoints = 75;
+        numberOfHonestNodes = 2500;
+        numberOfDeceptiveNodes = 100;
+        percentDeceptiveEntryPoints = 50;
         numberOfRuns = 5000;
     }
     
