@@ -42,20 +42,21 @@ public class MonteCarloSimController {
     public void run() {
         //Does all the stuff
         
-        //First, use the values in TestConditions to set up the Estate.
+        //First, get the values in TestConditions for setting up the Estate.
         numberOfHonestNodes = this.testConditions.getNumberofHonestNodes();
         numberOfDeceptiveNodes = this.testConditions.getNumberofDeceptiveNodes();
-        estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes);
         
         //Then set up a ResultLog and LogInterpreter
         lengthOfRun = this.testConditions.getLengthofRun();
         numberOfRuns = this.testConditions.getNumberOfRuns();
         logArray = new LogArray(numberOfRuns,lengthOfRun);
         logInterpreter = new LogInterpreter(logArray);
-        //Now set up an Attacker to attack the Estate.
-        Attacker attacker = new Attacker(logArray, estate);
 
         for (int i=0; i < numberOfRuns; i++) {
+            //Set up an estate and attacker (new for each run)
+            estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes);
+            Attacker attacker = new Attacker(logArray, estate);
+            //Launch a run.
             attacker.attackRun(lengthOfRun);
             
         }
