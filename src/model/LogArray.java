@@ -23,7 +23,7 @@ public class LogArray {
      */
     private int writeTracker;
     /**
-     * integer tracking where the LogArray is reading from.
+     * integer tracking where the LogArray is reading from (if ever needed).
      */
     private int readTracker;
     
