@@ -29,8 +29,6 @@ public class AttackerTest {
         logArray = new LogArray(numberOfRuns,lengthOfWalk);
         
         Attacker attacker = new Attacker(logArray, estate);
-        attacker.attackRun(10);
     }
-    
-    
+        
 }
