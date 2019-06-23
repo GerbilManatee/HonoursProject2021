@@ -78,6 +78,14 @@ public class LogInterpreter {
         
     }
     
-    
+    public float interpretInterceptResults() {
+        int[] interceptResults = this.getInterceptResults();
+        float sum = 0;
+        
+        for(int i = 0; i < (interceptResults.length); i++) {
+            sum += interceptResults[i];
+        }
+        return ((sum/interceptResults.length)*100);
+    }
     
 }
