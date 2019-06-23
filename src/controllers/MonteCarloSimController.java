@@ -8,6 +8,7 @@ package controllers;
 import model.Attacker;
 import model.Estate;
 import model.LogArray;
+import model.LogInterpreter;
 import model.TestConditions;
 
 /**
@@ -23,6 +24,7 @@ public class MonteCarloSimController {
     private int percentDeceptiveEntryPoints;
     private int numberOfRuns;
     private LogArray logArray;
+    private LogInterpreter logInterpreter;
     private Estate estate;
     
     
@@ -45,19 +47,19 @@ public class MonteCarloSimController {
         numberOfDeceptiveNodes = this.testConditions.getNumberofDeceptiveNodes();
         estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes);
         
-        //Then set up a ResultLog
+        //Then set up a ResultLog and LogInterpreter
         lengthOfRun = this.testConditions.getLengthofRun();
         numberOfRuns = this.testConditions.getNumberOfRuns();
-        logArray = new LogArray(numberOfRuns,lengthOfWalk);
-        
+        logArray = new LogArray(numberOfRuns,lengthOfRun);
+        logInterpreter = new LogInterpreter(logArray);
         //Now set up an Attacker to attack the Estate.
         Attacker attacker = new Attacker(logArray, estate);
-        
-        for (i=0; i < numberOfRuns; i++) {
+
+        for (int i=0; i < numberOfRuns; i++) {
             attacker.attackRun(lengthOfRun);
             
         }
-
-    }
+        System.out.println(logInterpreter.interpretInterceptResults());
     
+    }
 }
