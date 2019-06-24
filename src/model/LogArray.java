@@ -28,12 +28,16 @@ public class LogArray {
     private int readTracker;
     
     /**
-     * Default Constructor
+     * Default Constructor - 5 ResultLogs' worth.
      */
     public LogArray() {
         writeTracker = 0;
         readTracker = 0;
-        logArray = new ResultLog[1];
+        logArray = new ResultLog[5];
+        for (int i=0; i < 5; i++) {
+            logArray[i] = new ResultLog();
+        }
+        
     }
     
     /**
