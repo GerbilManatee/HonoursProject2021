@@ -20,14 +20,16 @@ public class AttackerTest2 {
     @Test
     public void AttackerCreationTest() {
         LogArray logArray = new LogArray(10, 10);
-        Estate estate = new Estate(250, 250);
-        
-        int lengthOfWalk = 10;
-        int numberOfRuns = 10;
-        logArray = new LogArray(numberOfRuns,lengthOfWalk);
-        
+        Estate estate = new Estate(250, 250);       
         Attacker attacker = new Attacker(logArray, estate);
     }
     
+    @Test
+    public void AttackRunTest() {
+        LogArray logArray = new LogArray(10, 10);
+        Estate estate = new Estate(250, 250);       
+        Attacker attacker = new Attacker(logArray, estate);
+        attacker.attackRun(10);
+    }
     
 }
