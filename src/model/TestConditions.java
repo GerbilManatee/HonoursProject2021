@@ -38,11 +38,26 @@ public class TestConditions {
     */
     
     public TestConditions() {
-        lengthOfRun = 20;
-        numberOfHonestNodes = 2500;
-        numberOfDeceptiveNodes = 100;
+        lengthOfRun = 5;
+        numberOfHonestNodes = 750;
+        numberOfDeceptiveNodes = 250;
         percentDeceptiveEntryPoints = 50;
-        numberOfRuns = 5000;
+        numberOfRuns = 50000;
+    }
+    /**
+     * Fully qualified constructor
+     * @param numberOfHonestNodes The number of non-deceptive nodes in the Estate
+     * @param numberOfDeceptiveNodes The number of deceptive nodes in the Estate
+     * @param percentDeceptiveEntryPoints The proportion of entry points that are deceptive.
+     * @param lengthOfRun The length of the run the attacker will be making on the network.
+     * @param numberOfRuns The number of runs to iterate through in the test.
+     */
+    public TestConditions(int numberOfHonestNodes, int numberOfDeceptiveNodes, int percentDeceptiveEntryPoints, int lengthOfRun, int numberOfRuns) {
+        this.numberOfHonestNodes = numberOfHonestNodes;
+        this.numberOfDeceptiveNodes = numberOfDeceptiveNodes;
+        this.percentDeceptiveEntryPoints = percentDeceptiveEntryPoints;
+        this.lengthOfRun = lengthOfRun;
+        this.numberOfRuns = numberOfRuns;
     }
     
     /*
