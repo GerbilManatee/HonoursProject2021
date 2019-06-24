@@ -16,8 +16,11 @@ public class Estate {
 
     List<Node> nodeArray;
     
-    //Default constructor - 
+    //Default constructor - one honest and 1 deceptive node.
     public Estate() {
+        nodeArray = new ArrayList<Node>();
+        nodeArray.add(new Node(false));
+        nodeArray.add(new Node(true));
         
     }
     
