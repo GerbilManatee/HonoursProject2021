@@ -25,10 +25,10 @@ public class ResultLog {
     private int indexRef;
     
     /**
-     * Default constructor.  Creates an array of size 1.  Shouldn't be used.
+     * Default constructor.  Creates an array of size 5.  Shouldn't be used.
      */
     ResultLog() {
-        interactions = new boolean[1];
+        interactions = new boolean[5];
         indexRef = 0;
     }
     
