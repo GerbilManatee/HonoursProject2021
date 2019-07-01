@@ -5,11 +5,15 @@
  */
 package controllers;
 
+import helpers.InputHelper;
+import java.util.HashSet;
+import java.util.Set;
 import model.Attacker;
 import model.Estate;
 import model.LogArray;
 import model.LogInterpreter;
 import model.TestConditions;
+import repositories.Repository;
 
 /**
  *
@@ -26,7 +30,7 @@ public class MonteCarloSimController {
     private LogArray logArray;
     private LogInterpreter logInterpreter;
     private Estate estate;
-    
+    private Repository repository;
     
     //constructors
     public MonteCarloSimController() {
@@ -34,8 +38,31 @@ public class MonteCarloSimController {
         
         //First, TestConditions.
         //Probably not much else?
-        testConditions = new TestConditions();
-        
+        InputHelper inputHelper = new InputHelper();
+        char c = inputHelper.readCharacter("Load an already existing Customers File (Y/N)?");
+        if (c == 'Y' || c == 'y') {
+            String fileName = inputHelper.readString("Enter filename");               
+            this.repository = new Repository(fileName);
+        }
+        else {
+            int lengthOfRun = inputHelper.readInt("How long will the attacker's runs be?/n(max 1000 lateral moves)",1000,0);
+            int numberOfRuns = inputHelper.readInt("How many runs will be made in this test?/n(max 1,000,000)",10000000,0);
+            int numberOfHonestNodes = inputHelper.readInt("How many honest nodes will the estate contain?/n(max. 10,000)",10000,0);
+            int numberOfDeceptiveNodes = inputHelper.readInt("How many deceptive nodes will the estate contain?/n(max. 10,000)",10000,0);
+            int numberOfHonestEntryPoints = inputHelper.readInt("How many of the honest nodes will be entry points?/nNB: There must be at least one entry point, either honest or deceptive.",numberOfHonestNodes,0);
+            int numberOfDeceptiveEntryPoints = inputHelper.readInt("Now many of the deceptive nodes will be entry points?",numberOfDeceptiveNodes,Integer.max(1,(1-numberOfHonestEntryPoints)));
+            
+            this.repository = new Repository();
+            this.repository.setLengthOfRun(lengthOfRun);
+            this.repository.setNumberOfRuns(numberOfRuns);
+            this.repository.setNumberofHonestNodes(numberOfHonestNodes);
+            this.repository.setNumberofDeceptiveNodes(numberOfDeceptiveNodes);
+            this.repository.setNumberOfHonestEntryPoints(numberOfHonestEntryPoints);
+            this.repository.setNumberOfDeceptiveEntryPoints(numberOfDeceptiveEntryPoints);
+            
+            
+        }
+
         
     }
     //methods
@@ -43,12 +70,12 @@ public class MonteCarloSimController {
         //Does all the stuff
         
         //First, get the values in TestConditions for setting up the Estate.
-        numberOfHonestNodes = this.testConditions.getNumberofHonestNodes();
-        numberOfDeceptiveNodes = this.testConditions.getNumberofDeceptiveNodes();
+        numberOfHonestNodes = this.repository.getNumberofHonestNodes();
+        numberOfDeceptiveNodes = this.repository.getNumberofDeceptiveNodes();
         
         //Then set up a ResultLog and LogInterpreter
-        lengthOfRun = this.testConditions.getLengthofRun();
-        numberOfRuns = this.testConditions.getNumberOfRuns();
+        lengthOfRun = this.repository.getLengthOfRun();
+        numberOfRuns = this.repository.getNumberOfRuns();
         logArray = new LogArray(numberOfRuns,lengthOfRun);
         logInterpreter = new LogInterpreter(logArray);
 
@@ -61,6 +88,16 @@ public class MonteCarloSimController {
             
         }
         System.out.println(logInterpreter.interpretInterceptResults());
+        
+        InputHelper inputHelper = new InputHelper();
+        char c = inputHelper.readCharacter("Save the test settings (Y/N)?");
+        if (c == 'Y' || c == 'y') {
+            String fileName = inputHelper.readString("Enter filename");               
+            this.repository.store(fileName);
+        }
+        else {
+        }
+
     
     }
 }

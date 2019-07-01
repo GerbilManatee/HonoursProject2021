@@ -19,6 +19,19 @@ public class TestConditionsTest {
     
     @Test
     public void ConstructorTest() {
-        TestConditions testConditions = new TestConditions(9999,9999,9999,9999,9999);
+        TestConditions testConditions = new TestConditions(9999,9999,9999,9999,9999,9999);
     }
+    
+    @Test
+    public void gettersToStringTest() {
+        TestConditions testConditions = new TestConditions(9999,9999,9999,9999,9999,9999);
+        System.out.println(testConditions.getLengthOfRun());
+        System.out.println(testConditions.getNumberOfRuns());
+        System.out.println(testConditions.getNumberOfHonestNodes());
+        System.out.println(testConditions.getNumberOfDeceptiveNodes());
+        System.out.println(testConditions.getNumberOfHonestEntryPoints());
+        System.out.println(testConditions.getNumberOfDeceptiveEntryPoints());
+        System.out.println(testConditions.toString(','));
+    }
+    
 }
