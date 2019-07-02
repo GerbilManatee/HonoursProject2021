@@ -36,20 +36,28 @@ public class Attacker {
      * @param lengthOfRun The number of nodes to interact with in the run.
      */
     public void attackRun(int lengthOfRun) {
+
+        int targetNode;
+
         for (int i = 1; i <= lengthOfRun; i++) {
-            
+            int targetRange;
             /* On each step of the run, we work out what the attacker knows it
-            can target.  Currently this is just a number of possible targets.
+            can target.  On the first step of the run this is the entry point, 
+            subsequently this is just a number of possible targets.
             */
-            int targetRange = scout(estate);
+            if(i==1) {
+                targetNode = recon(estate);
+            } else {
+                targetRange = scout(estate);
+                /*
+                Now we select a target from the range.  Just a random number - all
+                targets are equal, network is flat.
+                */
             
-            /*
-            Now we select a target from the range.  Just a random number - all
-            targets are equal, network is flat.
-            */
+                Random rng = new Random();
+                targetNode = rng.nextInt(targetRange);
+            }
             
-            Random rng = new Random();
-            int targetNode = rng.nextInt(targetRange);
             
             /*
             Now interact with a Node
@@ -71,5 +79,9 @@ public class Attacker {
     
     private int scout(Estate estate) {
         return estate.getEstateSize();
+    }
+    
+    private int recon(Estate estate) {
+        return estate.getReconData();
     }
 }

@@ -25,7 +25,8 @@ public class MonteCarloSimController {
     private int lengthOfRun;
     private int numberOfHonestNodes;
     private int numberOfDeceptiveNodes;
-    private int percentDeceptiveEntryPoints;
+    private int numberOfDeceptiveEntryPoints;
+    private int numberOfHonestEntryPoints;
     private int numberOfRuns;
     private LogArray logArray;
     private LogInterpreter logInterpreter;
@@ -45,20 +46,20 @@ public class MonteCarloSimController {
             this.repository = new Repository(fileName);
         }
         else {
-            int lengthOfRun = inputHelper.readInt("How long will the attacker's runs be?/n(max 1000 lateral moves)",1000,0);
-            int numberOfRuns = inputHelper.readInt("How many runs will be made in this test?/n(max 1,000,000)",10000000,0);
+            int lengthOfRun = inputHelper.readInt("How long will the attacker's runs be? (max 1000 lateral moves)",1000,0);
+            int numberOfRuns = inputHelper.readInt("How many runs will be made in this test? (max 1,000,000)",10000000,0);
+            int numberOfDeceptiveNodes = inputHelper.readInt("How many deceptive nodes will the estate contain? (max. 10,000)",10000,0);
             int numberOfHonestNodes = inputHelper.readInt("How many honest nodes will the estate contain?/n(max. 10,000)",10000,0);
-            int numberOfDeceptiveNodes = inputHelper.readInt("How many deceptive nodes will the estate contain?/n(max. 10,000)",10000,0);
-            int numberOfHonestEntryPoints = inputHelper.readInt("How many of the honest nodes will be entry points?/nNB: There must be at least one entry point, either honest or deceptive.",numberOfHonestNodes,0);
-            int numberOfDeceptiveEntryPoints = inputHelper.readInt("Now many of the deceptive nodes will be entry points?",numberOfDeceptiveNodes,Integer.max(1,(1-numberOfHonestEntryPoints)));
+            int numberOfDeceptiveEntryPoints = inputHelper.readInt("Now many of the deceptive nodes will be entry points? NB: There must be at least one entry point, either honest or deceptive.",numberOfDeceptiveNodes,0);
+            int numberOfHonestEntryPoints = inputHelper.readInt("How many of the honest nodes will be entry points?",numberOfHonestNodes,Integer.max(1,(1-numberOfDeceptiveEntryPoints)));
             
             this.repository = new Repository();
             this.repository.setLengthOfRun(lengthOfRun);
             this.repository.setNumberOfRuns(numberOfRuns);
-            this.repository.setNumberofHonestNodes(numberOfHonestNodes);
             this.repository.setNumberofDeceptiveNodes(numberOfDeceptiveNodes);
-            this.repository.setNumberOfHonestEntryPoints(numberOfHonestEntryPoints);
+            this.repository.setNumberofHonestNodes(numberOfHonestNodes);
             this.repository.setNumberOfDeceptiveEntryPoints(numberOfDeceptiveEntryPoints);
+            this.repository.setNumberOfHonestEntryPoints(numberOfHonestEntryPoints);
             
             
         }
@@ -73,6 +74,8 @@ public class MonteCarloSimController {
         numberOfHonestNodes = this.repository.getNumberofHonestNodes();
         numberOfDeceptiveNodes = this.repository.getNumberofDeceptiveNodes();
         
+        
+        
         //Then set up a ResultLog and LogInterpreter
         lengthOfRun = this.repository.getLengthOfRun();
         numberOfRuns = this.repository.getNumberOfRuns();
@@ -81,7 +84,7 @@ public class MonteCarloSimController {
 
         for (int i=0; i < numberOfRuns; i++) {
             //Set up an estate and attacker (new for each run)
-            estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes);
+            estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes, numberOfDeceptiveEntryPoints, numberOfHonestEntryPoints);
             Attacker attacker = new Attacker(logArray, estate);
             //Launch a run.
             attacker.attackRun(lengthOfRun);
