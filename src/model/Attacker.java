@@ -80,7 +80,12 @@ public class Attacker {
     private int scout(Estate estate) {
         return estate.getEstateSize();
     }
-    
+    /**
+     * recon is a method that represents the initial scout of an estate.  It 
+     * will return a node reference representing an entry point.
+     * @param estate
+     * @return int value of an entry point.
+     */
     private int recon(Estate estate) {
         return estate.getReconData();
     }

@@ -89,13 +89,14 @@ public class Estate {
      */
     //Expect to change this once the attacker gets a different form of knowledge.
     public int getReconData() {
+        
         int numberOfEntryPoints = this.numberOfHonestEntryPoints + this.numberOfDeceptiveEntryPoints;
             Random rng = new Random();
-            int targetNode = rng.nextInt(numberOfEntryPoints + 1);
-            if(targetNode <= this.numberOfHonestEntryPoints) {
+            int targetNode = rng.nextInt(numberOfEntryPoints);
+            if(targetNode < this.numberOfHonestEntryPoints) {
                 return 0;
             } else {
-                return nodeArray.size();
+                return (nodeArray.size() - 1);
             }
 
     }

@@ -73,8 +73,8 @@ public class MonteCarloSimController {
         //First, get the values in TestConditions for setting up the Estate.
         numberOfHonestNodes = this.repository.getNumberofHonestNodes();
         numberOfDeceptiveNodes = this.repository.getNumberofDeceptiveNodes();
-        
-        
+        numberOfDeceptiveEntryPoints = this.repository.getNumberOfDeceptiveEntryPoints();
+        numberOfHonestEntryPoints = this.repository.getNumberOfHonestEntryPoints();
         
         //Then set up a ResultLog and LogInterpreter
         lengthOfRun = this.repository.getLengthOfRun();
