@@ -22,7 +22,7 @@ public class AttackerTest {
 //    @Test
     public void AttackerCreationTest() {
         LogArray logArray = new LogArray(10, 10);
-        Estate estate = new Estate(250, 250);
+        Estate estate = new Estate(250, 250, 10, 10);
         
         int lengthOfWalk = 10;
         int numberOfRuns = 10;

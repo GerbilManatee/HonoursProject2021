@@ -69,7 +69,6 @@ public class DAOTextImpl implements DAOInterface {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TestConditions.class.getName()).log(Level.SEVERE, null, ex);
         }         
-        // Replace with dao creation & call
     }
     
         private String stripQuotes(String str) {
