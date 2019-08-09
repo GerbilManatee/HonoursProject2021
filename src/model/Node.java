@@ -36,4 +36,12 @@ public class Node {
         logArray.addResult(this.deceptive);
     }
     
+    /**
+     * Nodes are scannable for deception, but always report a negative.
+     * @return 
+     */
+    public boolean scan() {
+        return false;
+    }
+    
 }
