@@ -142,4 +142,9 @@ public class Repository implements java.io.Serializable {
     public void setNumberOfRuns(int numberOfRuns) {
         testConditions.setNumberOfRuns(numberOfRuns);
     }
+    
+    @Override
+    public String toString() {
+        return this.testConditions.toString();
+    }
 }

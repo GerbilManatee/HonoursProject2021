@@ -4,7 +4,8 @@
  * and open the template in the editor.
  */
 package model;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 /**
  *
  * @author hulle_000
@@ -130,7 +131,7 @@ public class LogInterpreter {
         
     }
 
-        public float interpretInterceptResults(int startStep, int endStep) {
+        public double interpretInterceptResults(int startStep, int endStep) {
         int[] interceptResults = this.getInterceptResults(startStep, endStep);
         float sum = 0;
         
@@ -177,6 +178,12 @@ public class LogInterpreter {
         //return the output array.
         return output;
         
+    }
+    
+    public String printInterceptResults() {
+        String output = "Overall likelihood of the attacker interacting with deceptive nodes: "
+                + BigDecimal.valueOf(interpretInterceptResults()).setScale(1, RoundingMode.HALF_UP) + "%\n";
+        return output;
     }
 
 }

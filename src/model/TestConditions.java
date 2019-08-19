@@ -219,4 +219,20 @@ public class TestConditions {
         return output;
     }
     
+    @Override
+    public String toString() {
+        String output = "Test Conditions:\n";
+        output += "Number of deceptive nodes:        " + this.numberOfDeceptiveNodes + "\n";
+        output += "Number of honest nodes:           " + this.numberOfHonestNodes + "\n";
+        output += "Number of deceptive entry points: " + this.numberOfDeceptiveEntryPoints + "\n";
+        output += "Number of honest entry points:    " + this.numberOfHonestEntryPoints + "\n";
+        if(this.numberVisibleNodes > 0) {
+            output += "Number of 'visible nodes':        " + this.numberVisibleNodes + "\n";
+        }
+        
+        output += "Length of each attack run:        " + this.lengthOfRun + "\n";
+        output += "Number of runs simulated:         " + this.numberOfRuns + "\n";
+        
+        return output;
+    }
 }

@@ -40,7 +40,7 @@ public class MonteCarloSimController {
         //First, TestConditions.
         //Probably not much else?
         InputHelper inputHelper = new InputHelper();
-        char c = inputHelper.readCharacter("Load an already existing Customers File (Y/N)?");
+        char c = inputHelper.readCharacter("Load an already existing file (Y/N)?");
         if (c == 'Y' || c == 'y') {
             String fileName = inputHelper.readString("Enter filename");               
             this.repository = new Repository(fileName);
@@ -90,7 +90,8 @@ public class MonteCarloSimController {
             attacker.attackRun(lengthOfRun);
             //Do I need to tear down?
         }
-        System.out.println(logInterpreter.interpretInterceptResults());
+        System.out.print(this.repository.toString());
+        System.out.println(logInterpreter.printInterceptResults());
         
         InputHelper inputHelper = new InputHelper();
         char c = inputHelper.readCharacter("Save the test settings (Y/N)?");
