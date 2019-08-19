@@ -37,7 +37,7 @@ public class Repository implements java.io.Serializable {
     }
     
     public Repository(String filename) {
-        this();
+        //this();
 
         DAOTextImpl dao = new DAOTextImpl();
         this.testConditions = dao.load(filename);

@@ -38,16 +38,19 @@ public class DAOTextImpl implements DAOInterface {
             int numberOfDeceptiveEntryPoints;
             //while(line!=null){
                 temp=line.split(Character.toString(DELIMITER));
-                lengthOfRun = Integer.parseInt(temp[0]);
-                numberOfRuns = Integer.parseInt(temp[1]);
+                testConditions.setLengthOfRun(Integer.parseInt(temp[0]));
+                testConditions.setNumberOfRuns(Integer.parseInt(temp[1]));
             //}
             line = br.readLine();
             //while(line!=null){
                 temp=line.split(Character.toString(DELIMITER));
-                numberOfHonestNodes = Integer.parseInt(temp[0]);
-                numberOfDeceptiveNodes = Integer.parseInt(temp[1]);
-                numberOfHonestEntryPoints = Integer.parseInt(temp[2]);
-                numberOfDeceptiveEntryPoints = Integer.parseInt(temp[3]);
+                testConditions.setNumberOfHonestNodes(Integer.parseInt(temp[0]));
+                testConditions.setNumberOfDeceptiveNodes(Integer.parseInt(temp[1]));
+                testConditions.setNumberOfHonestEntryPoints(Integer.parseInt(temp[2]));
+                testConditions.setNumberOfDeceptiveEntryPoints(Integer.parseInt(temp[3]));
+                if(temp.length > 5) {
+                    testConditions.setVisibleNodes(Integer.parseInt(temp[4]), Integer.parseInt(temp[5]));
+                }
             //}
 
         br.close();

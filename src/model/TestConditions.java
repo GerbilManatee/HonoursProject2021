@@ -40,24 +40,37 @@ public class TestConditions {
     private int numberOfRuns;
     
     /**
+     * The number of VisibleNodes
+     */
+    private int numberVisibleNodes;
+    
+    /**
+     * % chance of detecting a visible node
+     */
+    private int visibleNodeDetect;
+    
+    /**
     *TestConditions() makes an object with predefined, default conditions.
     */
     
     public TestConditions() {
-        lengthOfRun = 5;
-        numberOfRuns = 50000;
-        numberOfHonestNodes = 750;
-        numberOfDeceptiveNodes = 250;
-        numberOfHonestEntryPoints = 50;
-        numberOfDeceptiveEntryPoints = 50;
+        lengthOfRun = 0;
+        numberOfRuns = 0;
+        numberOfHonestNodes = 0;
+        numberOfDeceptiveNodes = 0;
+        numberOfHonestEntryPoints = 0;
+        numberOfDeceptiveEntryPoints = 0;
+        numberVisibleNodes = 0;
+        visibleNodeDetect = 0;
     }
     /**
-     * Fully qualified constructor
+     * Mostly qualified constructor
      * @param lengthOfRun The length of the run the attacker will be making on the network.
      * @param numberOfRuns The number of runs to iterate through in the test.
      * @param numberOfHonestNodes The number of non-deceptive nodes in the Estate
      * @param numberOfDeceptiveNodes The number of deceptive nodes in the Estate
-     * @param percentDeceptiveEntryPoints The proportion of entry points that are deceptive.
+     * @param numberOfHonestEntryPoints Number of possible honest entry points
+     * @param numberOfDeceptiveEntryPoints number of possible deceptive entry points.
      */
     public TestConditions(int lengthOfRun, int numberOfRuns, int numberOfHonestNodes, int numberOfDeceptiveNodes, int numberOfHonestEntryPoints, int numberOfDeceptiveEntryPoints) {
         this.lengthOfRun = lengthOfRun;
@@ -66,6 +79,8 @@ public class TestConditions {
         this.numberOfDeceptiveNodes = numberOfDeceptiveNodes;
         this.numberOfHonestEntryPoints = numberOfHonestEntryPoints;
         this.numberOfDeceptiveEntryPoints = numberOfDeceptiveEntryPoints;
+        numberVisibleNodes = 0;
+        visibleNodeDetect = 0;
     }
     
     /*
@@ -109,6 +124,18 @@ public class TestConditions {
     
     /**
      * 
+     * @return the number of visible nodes.
+     */
+    public int getVisibleNodes() {
+        return numberVisibleNodes;
+    }
+    
+    public int getVisibleNodeDetect() {
+        return visibleNodeDetect;
+    }
+    
+    /**
+     * 
      * @return The number of simulated runs to make in this Monte Carlo sim.
      */
     public int getNumberOfRuns() {
@@ -137,6 +164,16 @@ public class TestConditions {
      */
     public void setNumberOfDeceptiveNodes(int numberOfDeceptiveNodes) {
         this.numberOfDeceptiveNodes = numberOfDeceptiveNodes;
+    }
+    
+    /**
+     * Sets conditions for visible nodes in the system.
+     * @param numberVisibleNodes the number of VisibleNodes there will be.
+     * @param visibleNodeDetect the % chance these nodes will be detected.
+     */
+    public void setVisibleNodes(int numberVisibleNodes, int visibleNodeDetect) {
+        this.numberVisibleNodes = numberVisibleNodes;
+        this.visibleNodeDetect = visibleNodeDetect;
     }
  
     /**
@@ -175,7 +212,9 @@ public class TestConditions {
         output += Integer.toString(this.numberOfHonestNodes) + delimiter;
         output += Integer.toString(this.numberOfDeceptiveNodes) + delimiter;
         output += Integer.toString(this.numberOfHonestEntryPoints) + delimiter;
-        output += Integer.toString(this.numberOfDeceptiveEntryPoints);
+        output += Integer.toString(this.numberOfDeceptiveEntryPoints) + delimiter;
+        output += Integer.toString(this.numberVisibleNodes) + delimiter;
+        output += Integer.toString(this.visibleNodeDetect);
         output += EOLN;
         return output;
     }

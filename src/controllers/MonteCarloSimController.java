@@ -88,7 +88,7 @@ public class MonteCarloSimController {
             Attacker attacker = new Attacker(logArray, estate);
             //Launch a run.
             attacker.attackRun(lengthOfRun);
-            
+            //Do I need to tear down?
         }
         System.out.println(logInterpreter.interpretInterceptResults());
         

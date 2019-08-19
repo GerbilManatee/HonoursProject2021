@@ -38,7 +38,7 @@ public class Node {
     
     /**
      * Nodes are scannable for deception, but always report a negative.
-     * @return 
+     * @return false
      */
     public boolean scan() {
         return false;
