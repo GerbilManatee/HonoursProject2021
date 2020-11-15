@@ -6,6 +6,9 @@
 package model;
 //import org.junit.Assert;
 //import static org.junit.Assert.fail;
+
+import model.attackers.Attacker;
+
 //import org.junit.Test;
 /**
  *

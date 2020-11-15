@@ -39,7 +39,7 @@ public class VisibleNode extends Node {
     }
     
     /**
-     * Overridden scan() method.  When scanned, detectChance is used as a
+     * Overridden scan() methods.  When scanned, detectChance is used as a
      * percentage chance of the node being detected as deceptive.
      * @return true if the node is successfully scanned.
      */
@@ -47,5 +47,11 @@ public class VisibleNode extends Node {
     public boolean scan() {
         Random rng = new Random();
         return (rng.nextInt(100) < detectChance);
+    }
+
+    @Override
+    public boolean scan(int modifier) {
+        Random rng = new Random();
+        return (rng.nextInt(100) < (detectChance+modifier));
     }
 }

@@ -5,6 +5,8 @@
  */
 package model;
 
+import java.util.Random;
+
 /**
  *
  * @author hulle_000
@@ -43,5 +45,10 @@ public class Node {
     public boolean scan() {
         return false;
     }
+
+    public boolean scan(int modifier) {
+        return false;
+    }
     
+
 }

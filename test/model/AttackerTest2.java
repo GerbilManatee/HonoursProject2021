@@ -5,6 +5,7 @@
  */
 package model;
 
+import model.attackers.Attacker;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

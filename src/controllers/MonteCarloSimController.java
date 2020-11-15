@@ -8,7 +8,7 @@ package controllers;
 import helpers.InputHelper;
 import java.util.HashSet;
 import java.util.Set;
-import model.Attacker;
+import model.attackers.Attacker;
 import model.Estate;
 import model.LogArray;
 import model.LogInterpreter;
