@@ -21,18 +21,18 @@ import repositories.Repository;
  */
 public class MonteCarloSimController {
     //variables
-    private TestConditions testConditions;
-    private int lengthOfRun;
-    private int numberOfHonestNodes;
-    private int numberOfDeceptiveNodes;
-    private int numberOfDeceptiveEntryPoints;
-    private int numberOfHonestEntryPoints;
-    private int numberOfRuns;
+    //private TestConditions testConditions;
+    //private int lengthOfRun;
+    //private int numberOfHonestNodes;
+    //private int numberOfDeceptiveNodes;
+    //private int numberOfDeceptiveEntryPoints;
+    //private int numberOfHonestEntryPoints;
+    //private int numberOfRuns;
     private LogArray logArray;
     private LogInterpreter logInterpreter;
     private Estate estate;
     private Repository repository;
-    
+    private Attacker attacker;   
     //constructors
     public MonteCarloSimController() {
         //What do I need it to know when created?
@@ -71,21 +71,21 @@ public class MonteCarloSimController {
         //Does all the stuff
         
         //First, get the values in TestConditions for setting up the Estate.
-        numberOfHonestNodes = this.repository.getNumberofHonestNodes();
-        numberOfDeceptiveNodes = this.repository.getNumberofDeceptiveNodes();
-        numberOfDeceptiveEntryPoints = this.repository.getNumberOfDeceptiveEntryPoints();
-        numberOfHonestEntryPoints = this.repository.getNumberOfHonestEntryPoints();
+        int numberOfHonestNodes = this.repository.getNumberofHonestNodes();
+        int numberOfDeceptiveNodes = this.repository.getNumberofDeceptiveNodes();
+        int numberOfDeceptiveEntryPoints = this.repository.getNumberOfDeceptiveEntryPoints();
+        int numberOfHonestEntryPoints = this.repository.getNumberOfHonestEntryPoints();
         
         //Then set up a ResultLog and LogInterpreter
-        lengthOfRun = this.repository.getLengthOfRun();
-        numberOfRuns = this.repository.getNumberOfRuns();
+        int lengthOfRun = this.repository.getLengthOfRun();
+        int numberOfRuns = this.repository.getNumberOfRuns();
         logArray = new LogArray(numberOfRuns,lengthOfRun);
         logInterpreter = new LogInterpreter(logArray);
 
         for (int i=0; i < numberOfRuns; i++) {
             //Set up an estate and attacker (new for each run)
             estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes, numberOfDeceptiveEntryPoints, numberOfHonestEntryPoints);
-            Attacker attacker = new Attacker(logArray, estate);
+            attacker = new Attacker(logArray, estate);
             //Launch a run.
             attacker.attackRun(lengthOfRun);
             //Do I need to tear down?

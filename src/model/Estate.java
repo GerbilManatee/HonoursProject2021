@@ -105,5 +105,11 @@ public class Estate {
         Node node = nodeArray.get(targetNode);
         return node.scan();
     }
+
+    public boolean scan(int targetNode, int modifier) {
+        Node node = nodeArray.get(targetNode);
+        return node.scan(modifier);
+    }
+    
     
 } 
