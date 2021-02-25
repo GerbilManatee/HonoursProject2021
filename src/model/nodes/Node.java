@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package model.nodes;
 
 import java.util.Random;
+import model.LogArray;
 
 /**
  *
  * @author hulle_000
  */
-public class Node {
+public class Node implements NodeInterface {
     /**
      * boolean deceptive indicates whether the node is deceptive or not.
      */
@@ -19,11 +20,11 @@ public class Node {
     /**
      * int nodeID  stores the ID of the node.
      */
-    Node() {
+    public Node() {
         this.deceptive = false;
     }
     
-    Node(boolean deceptive) {
+    public Node(boolean deceptive) {
         this.deceptive = deceptive;
     }
     
@@ -48,6 +49,11 @@ public class Node {
 
     public boolean scan(int modifier) {
         return false;
+    }
+
+    @Override
+    public boolean interact() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 

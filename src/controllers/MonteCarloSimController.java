@@ -69,22 +69,23 @@ public class MonteCarloSimController {
     //methods
     public void run() {
         //Does all the stuff
+
+        //Set up a ResultLog and LogInterpreter
+        int lengthOfRun = this.repository.getLengthOfRun();
+        int numberOfRuns = this.repository.getNumberOfRuns();
+        logArray = new LogArray(numberOfRuns,lengthOfRun);
+        logInterpreter = new LogInterpreter(logArray);
         
-        //First, get the values in TestConditions for setting up the Estate.
+        //Get the values in TestConditions for setting up the Estate.
         int numberOfHonestNodes = this.repository.getNumberofHonestNodes();
         int numberOfDeceptiveNodes = this.repository.getNumberofDeceptiveNodes();
         int numberOfDeceptiveEntryPoints = this.repository.getNumberOfDeceptiveEntryPoints();
         int numberOfHonestEntryPoints = this.repository.getNumberOfHonestEntryPoints();
         
-        //Then set up a ResultLog and LogInterpreter
-        int lengthOfRun = this.repository.getLengthOfRun();
-        int numberOfRuns = this.repository.getNumberOfRuns();
-        logArray = new LogArray(numberOfRuns,lengthOfRun);
-        logInterpreter = new LogInterpreter(logArray);
 
         for (int i=0; i < numberOfRuns; i++) {
             //Set up an estate and attacker (new for each run)
-            estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes, numberOfDeceptiveEntryPoints, numberOfHonestEntryPoints);
+            estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes, numberOfDeceptiveEntryPoints, numberOfHonestEntryPoints, logArray);
             attacker = new Attacker(logArray, estate);
             //Launch a run.
             attacker.attackRun(lengthOfRun);

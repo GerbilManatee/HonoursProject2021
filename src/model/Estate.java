@@ -5,6 +5,7 @@
  */
 package model;
 
+import model.nodes.Node;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -16,6 +17,7 @@ import java.util.Random;
 public class Estate {
 
     List<Node> nodeArray;
+    LogArray logArray;
     int numberOfDeceptiveEntryPoints;
     int numberOfHonestEntryPoints;
     
@@ -24,10 +26,11 @@ public class Estate {
         nodeArray = new ArrayList<Node>();
         nodeArray.add(new Node(false));
         nodeArray.add(new Node(true));
+        logArray = new LogArray(1,1);
         
     }
     
-    public Estate(int numberOfDeceptiveNodes, int numberOfHonestNodes, int numberOfDeceptiveEntryPoints, int numberOfHonestEntryPoints) {
+    public Estate(int numberOfDeceptiveNodes, int numberOfHonestNodes, int numberOfDeceptiveEntryPoints, int numberOfHonestEntryPoints, LogArray logArray) {
         /* I was thinking of using an array, but I'd prefer a List structure for nodes just now.
         It makes Bayesian handling interactions with individual Nodes and their
         removal from the pool of available nodes for an Attacker to interact with
@@ -43,7 +46,7 @@ public class Estate {
         
         //Node[] nodeArray;
         //nodeArray = new Node[numberOfDeceptiveNodes + numberOfHonestNodes];
-        nodeArray = new ArrayList<Node>();
+        nodeArray = new ArrayList<>();
         this.numberOfDeceptiveEntryPoints = numberOfDeceptiveEntryPoints;
         this.numberOfHonestEntryPoints = numberOfHonestEntryPoints;
         //Create honest nodes first, one at a time.

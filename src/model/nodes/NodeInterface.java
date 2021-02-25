@@ -10,5 +10,7 @@ package model.nodes;
  * @author Greg
  */
 public interface NodeInterface {
-    
+    public boolean interact();
+    public boolean scan();
+    public boolean scan(int modifier);
 }
