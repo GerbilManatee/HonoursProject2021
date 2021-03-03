@@ -19,8 +19,8 @@ public class CarefulAttacker extends Attacker{
         super();
     }
     
-    public CarefulAttacker(LogArray logArray, Estate estate){
-        super(logArray, estate);
+    public CarefulAttacker(Estate estate){
+        super(estate);
     }
     
    
@@ -63,6 +63,5 @@ public class CarefulAttacker extends Attacker{
         }
         
         //Once we've finished a run, we tell the LogArray that the run is over.
-        logArray.endLog();
     }
 }

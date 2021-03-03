@@ -20,13 +20,15 @@ public class EstateTest {
     @Test
     public void constructorTest() {
         Estate estate = new Estate();
-        estate = new Estate(100,100, 10, 1);
+        LogArray logArray = new LogArray(10,10);
+        estate = new Estate(100,100, 10, 1,logArray);
     }
     
     @Test
     public void getEstateSizeTest() {
         System.out.println("Creating an estate of 10 honest and 10 deceptive nodes.");
-        Estate estate = new Estate(10,10, 3, 3);
+        LogArray logArray = new LogArray(10,10);
+        Estate estate = new Estate(10,10, 3, 3,logArray);
         System.out.println("The reported size is: " + estate.getEstateSize() + " nodes");
     }
     

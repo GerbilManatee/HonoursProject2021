@@ -16,7 +16,7 @@ import model.LogArray;
 public class Attacker {
     //Variables
     int knowledge;
-    LogArray logArray;
+//    LogArray logArray;
     Estate estate;
     //Constructors
 
@@ -24,12 +24,12 @@ public class Attacker {
      *  Default constructor.  Not really suitable for use
      */
     public Attacker(){
-        logArray = new LogArray();
+//        logArray = new LogArray();
         estate = new Estate();
     }
     
-    public Attacker(LogArray logArray, Estate estate) {
-        this.logArray = logArray;
+    public Attacker(Estate estate) {
+//        this.logArray = logArray;
         this.estate = estate;
     }
     //Methods 
@@ -68,9 +68,6 @@ public class Attacker {
             //test print
             //System.out.println("Attack no. " + i + " on target" + targetNode);
         }
-        
-        //Once we've finished a run, we tell the LogArray that the run is over.
-        logArray.endLog();
     }
     
     /**
@@ -93,7 +90,7 @@ public class Attacker {
     }
     
     protected void attackNode(int targetNode) {
-            estate.nodeInteract(targetNode, logArray);
+            estate.nodeInteract(targetNode);
         
     }
 }

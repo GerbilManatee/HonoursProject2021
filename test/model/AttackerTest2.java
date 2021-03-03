@@ -21,15 +21,15 @@ public class AttackerTest2 {
     @Test
     public void AttackerCreationTest() {
         LogArray logArray = new LogArray(10, 10);
-        Estate estate = new Estate(250, 250, 10, 10);       
-        Attacker attacker = new Attacker(logArray, estate);
+        Estate estate = new Estate(250, 250, 10, 10,logArray);       
+        Attacker attacker = new Attacker(estate);
     }
     
     @Test
     public void AttackRunTest() {
         LogArray logArray = new LogArray(10, 10);
-        Estate estate = new Estate(250, 250, 10, 10);       
-        Attacker attacker = new Attacker(logArray, estate);
+        Estate estate = new Estate(250, 250, 10, 10,logArray);       
+        Attacker attacker = new Attacker(estate);
         attacker.attackRun(10);
     }
     

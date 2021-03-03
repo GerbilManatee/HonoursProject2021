@@ -46,6 +46,7 @@ public class Estate {
         
         //Node[] nodeArray;
         //nodeArray = new Node[numberOfDeceptiveNodes + numberOfHonestNodes];
+        this.logArray = logArray;
         nodeArray = new ArrayList<>();
         this.numberOfDeceptiveEntryPoints = numberOfDeceptiveEntryPoints;
         this.numberOfHonestEntryPoints = numberOfHonestEntryPoints;
@@ -82,7 +83,23 @@ public class Estate {
      */
     public void nodeInteract(int targetNode, LogArray logArray) {
         Node node = nodeArray.get(targetNode);
-        node.interact(logArray);
+        /** 
+         * The code here was:
+         * node.interact(logArray);
+         * but... I'm changing it so that the Estate triggers the log entry using a boolean result from the interact record.
+         * 
+         */
+        logArray.addResult(node.interact()); 
+        nodeArray.remove(targetNode);
+        //System.out.println("Attacked and removed node" + targetNode);
+    }
+    /**
+     * Overloaded nodeInteract that takes only the target node and relies on the Estate's own logArray reference.
+     * @param targetNode the node being interacted with.
+     */
+    public void nodeInteract(int targetNode) {
+        Node node = nodeArray.get(targetNode);
+        this.logArray.addResult(node.interact()); 
         nodeArray.remove(targetNode);
         //System.out.println("Attacked and removed node" + targetNode);
     }

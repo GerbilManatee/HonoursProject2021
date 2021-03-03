@@ -86,9 +86,10 @@ public class MonteCarloSimController {
         for (int i=0; i < numberOfRuns; i++) {
             //Set up an estate and attacker (new for each run)
             estate = new Estate(numberOfDeceptiveNodes, numberOfHonestNodes, numberOfDeceptiveEntryPoints, numberOfHonestEntryPoints, logArray);
-            attacker = new Attacker(logArray, estate);
+            attacker = new Attacker(estate);
             //Launch a run.
             attacker.attackRun(lengthOfRun);
+            logArray.endLog();
             //Do I need to tear down?
         }
         System.out.print(this.repository.toString());

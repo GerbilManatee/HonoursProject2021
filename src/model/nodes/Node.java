@@ -50,10 +50,13 @@ public class Node implements NodeInterface {
     public boolean scan(int modifier) {
         return false;
     }
-
+    /**
+     * 
+     * @return deception status of the node to the calling object.
+     */
     @Override
     public boolean interact() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this.deceptive;
     }
     
 

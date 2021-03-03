@@ -23,15 +23,13 @@ public class AttackerTest {
     * Test Attacker creation
     */
 //    @Test
-    public void AttackerCreationTest() {
-        LogArray logArray = new LogArray(10, 10);
-        Estate estate = new Estate(250, 250, 10, 10);
-        
+    public void AttackerCreationTest() {        
         int lengthOfWalk = 10;
         int numberOfRuns = 10;
-        logArray = new LogArray(numberOfRuns,lengthOfWalk);
+        LogArray logArray = new LogArray(numberOfRuns,lengthOfWalk);
+        Estate estate = new Estate(250, 250, 10, 10,logArray);
         
-        Attacker attacker = new Attacker(logArray, estate);
+        Attacker attacker = new Attacker(estate);
     }
         
 }
