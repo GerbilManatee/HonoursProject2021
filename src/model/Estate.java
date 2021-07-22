@@ -8,13 +8,13 @@ package model;
 import model.nodes.Node;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
+//import java.util.Random;
+import org.apache.commons.math3.random.MersenneTwister;
 /**
  *
  * @author hulle_000
  */
-public class Estate {
+public class Estate implements EstateInterface{
 
     List<Node> nodeArray;
     LogArray logArray;
@@ -81,7 +81,7 @@ public class Estate {
      * @param targetNode The node the Attacker is attacking
      * @param logArray The LogArray to log the interaction with.
      */
-    public void nodeInteract(int targetNode, LogArray logArray) {
+    @Override public void nodeInteract(int targetNode, LogArray logArray) {
         Node node = nodeArray.get(targetNode);
         /** 
          * The code here was:
@@ -97,7 +97,7 @@ public class Estate {
      * Overloaded nodeInteract that takes only the target node and relies on the Estate's own logArray reference.
      * @param targetNode the node being interacted with.
      */
-    public void nodeInteract(int targetNode) {
+    @Override public void nodeInteract(int targetNode) {
         Node node = nodeArray.get(targetNode);
         this.logArray.addResult(node.interact()); 
         nodeArray.remove(targetNode);
@@ -111,7 +111,7 @@ public class Estate {
     public int getReconData() {
         
         int numberOfEntryPoints = this.numberOfHonestEntryPoints + this.numberOfDeceptiveEntryPoints;
-            Random rng = new Random();
+            MersenneTwister rng = new MersenneTwister();
             int targetNode = rng.nextInt(numberOfEntryPoints);
             if(targetNode < this.numberOfHonestEntryPoints) {
                 return 0;
@@ -121,12 +121,12 @@ public class Estate {
 
     }
     
-    public boolean scan(int targetNode) {
+    @Override public boolean scan(int targetNode) {
         Node node = nodeArray.get(targetNode);
         return node.scan();
     }
 
-    public boolean scan(int targetNode, int modifier) {
+    @Override public boolean scan(int targetNode, int modifier) {
         Node node = nodeArray.get(targetNode);
         return node.scan(modifier);
     }

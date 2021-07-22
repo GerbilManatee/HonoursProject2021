@@ -5,7 +5,9 @@
  */
 package model.nodes;
 
-import java.util.Random;
+//import java.util.Random;
+//import org.apache.commons.math3.random.MersenneTwister;
+
 /**
  *VisibleNodes are a deceptive node that can be detected as such by an Attacker
  * that scans them.
@@ -28,13 +30,19 @@ public class VisibleNode extends Node {
         super(true);
         this.detectChance = 10;
     }
+
+    public VisibleNode(boolean deceptive) {
+        super(deceptive);
+        this.detectChance = 0;
+    }
     
     /**
      * A VisibleNode with a configurable chance of detection.
+     * @param deceptive as per the super class, this is the deceptive state of the node
      * @param detectChance 
      */
-    public VisibleNode(int detectChance) {
-        super(true);
+    public VisibleNode(boolean deceptive,int detectChance) {
+        super(deceptive);
         this.detectChance = detectChance;
     }
     
@@ -45,13 +53,23 @@ public class VisibleNode extends Node {
      */
     @Override
     public boolean scan() {
-        Random rng = new Random();
-        return (rng.nextInt(100) < detectChance);
+        if(NodeRNG.nextInt(100) < detectChance) {
+            return this.deceptive;
+        }
+        else {
+           return false; 
+        }
     }
 
     @Override
     public boolean scan(int modifier) {
-        Random rng = new Random();
-        return (rng.nextInt(100) < (detectChance+modifier));
-    }
+
+        if(NodeRNG.nextInt(100) < (detectChance + modifier)) {
+            return this.deceptive;
+        }
+        else {
+           return false; 
+        }
+
+    } 
 }

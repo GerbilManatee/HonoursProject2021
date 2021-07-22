@@ -52,8 +52,6 @@ public class LogArray {
         
         for (int i=0; i < numberOfRuns; i++) {
             logArray[i] = new ResultLog(lengthOfRun);
-            //Test println statement - demonstrates that each log is being created.
-            //System.out.println("ResultLog " + (i+1));
         }
     }
     
@@ -92,6 +90,8 @@ public class LogArray {
     public int getLogArraySize() {
         return logArray.length;
     }
+    
+
     /**
      * 
      * @param resultLog The position in the LogArray of the ResultLog being queried.
@@ -99,6 +99,10 @@ public class LogArray {
      */
     public int getResultLogLength(int resultLog) {
         return logArray[resultLog].getLogLength();
+    }
+    
+    public int getFirstDeception(int resultLog) {
+        return logArray[resultLog].getFirstDeception();
     }
     
 }

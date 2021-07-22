@@ -5,9 +5,11 @@
  */
 package model.attackers;
 
-import java.util.Random;
+//import java.util.Random;
 import model.Estate;
 import model.LogArray;
+import org.apache.commons.math3.random.MersenneTwister;
+
 
 /**
  *
@@ -49,7 +51,7 @@ public class CarefulAttacker extends Attacker{
                 targets are equal, network is flat.
                 */
             
-                Random rng = new Random();
+                MersenneTwister rng = new MersenneTwister();
                 targetNode = rng.nextInt(targetRange);
             }
             

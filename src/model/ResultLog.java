@@ -81,5 +81,12 @@ public class ResultLog {
         return this.interactions.length;
     }
     
-    
+    public int getFirstDeception() {
+        for(int n = 0; n < this.interactions.length; n++) {
+            if(interactions[n] == true) {
+                return n+1;
+            }
+        }
+        return -1;
+    }
 }

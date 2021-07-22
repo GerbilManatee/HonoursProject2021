@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package montecarlosim;
-import controllers.MonteCarloSimController;
+import controllers.ShapedMonteCarloSimController;
 /**
  *
  * @author hulle_000
@@ -15,7 +15,7 @@ public class MonteCarloSim {
      */
     
     public static void run() {
-        MonteCarloSimController monteCarloSimController = new MonteCarloSimController();
+        ShapedMonteCarloSimController monteCarloSimController = new ShapedMonteCarloSimController();
         monteCarloSimController.run();
     }
     

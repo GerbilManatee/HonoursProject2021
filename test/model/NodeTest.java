@@ -29,8 +29,8 @@ public class NodeTest {
         LogArray logArray = new LogArray();
         Node testNode1 = new Node(false);
         Node testNode2 = new Node(true);
-        testNode1.interact(logArray);
-        testNode2.interact(logArray);
+        logArray.addResult(testNode1.interact());
+        logArray.addResult(testNode2.interact());
         
        
     }
