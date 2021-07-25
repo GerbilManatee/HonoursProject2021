@@ -74,7 +74,7 @@ public class ShapedAttacker implements AttackerInterface{
                         }
                     }
                     else {
-                        System.out.println("Recon pool emptied while scouting first move");
+//                        System.out.println("Recon pool emptied while scouting first move");
                         return;
                     }
                 }

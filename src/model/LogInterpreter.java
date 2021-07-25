@@ -319,13 +319,14 @@ public class LogInterpreter {
         if(filteredArray.size()>0) {
             System.out.println(filteredArray.size() + " runs encountered deception. From these, the average number of lateral moves taken to interact with a deceptive node was: ");
             double mean = getMeanFirstDeception(filteredArray);
-            System.out.println("Mean value: " + BigDecimal.valueOf(mean).setScale(2, RoundingMode.HALF_UP) + " lateral moves");
-            System.out.println("Standard deviation is  " + BigDecimal.valueOf(stDev(filteredArray, mean)).setScale(2, RoundingMode.HALF_UP));
+            System.out.print("Mean value: " + BigDecimal.valueOf(mean).setScale(2, RoundingMode.HALF_UP) + " lateral moves");
+            System.out.println(", with a standard deviation of  " + BigDecimal.valueOf(stDev(filteredArray, mean)).setScale(2, RoundingMode.HALF_UP) + ".");
             System.out.println("Modal value: " + getModalFirstDeception(filteredArray,logArray.getResultLogLength(0)) + " lateral moves");
             System.out.println("Median Value: " + getMedianFirstDeception(filteredArray) + " lateral moves");
         } else {
-            System.out.println("As there were no encounters with deception, no additional data could be calculated");
+            System.out.println("As there were no encounters with deception, no additional data could be calculated.");
         }
+        System.out.println("\n");
     }
     
     public double stDev(ArrayList<Integer> decArray, double mean) {
